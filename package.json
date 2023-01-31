@@ -1,7 +1,8 @@
 {
   "name": "swagger-express-middleware-wrapper",
   "version": "1.0.0",
-  "main": "index.js",
+  "types": "./lib/cjs/types/index.d.ts",
+  "main": "./lib/cjs/index.js",
   "license": "MIT",
   "private": true,
   "devDependencies": {
@@ -11,15 +12,29 @@
     "rimraf": "~4.1.0",
     "typescript": "^4.9.4"
   },
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./lib/esm/types/index.d.ts",
+        "default": "./lib/esm/index.js"
+      },
+      "require": {
+        "types": "./lib/cjs/types/index.d.ts",
+        "default": "./lib/cjs/index.js"
+      }
+    }
+  },
   "scripts": {
-    "build:cjs": "tsc --module commonjs",
-    "build:esm": "tsc --module esnext",
-    "build": "yarn run build:cjs && yarn run build:esm",
-    "clean": "rimraf dist",
-    "develop": "yarn serve | pino-pretty",
-    "serve": "cd dist && node ./index.js"
+    "clean": "rimraf dist ./lib",
+    "build": "yarn run clean && yarn run build:esm && yarn run build:cjs",
+    "build:esm": "tsc -p ./tsconfig.esm.json",
+    "build:cjs": "tsc -p ./tsconfig.cjs.json",
+    "prepack": "yarn run build"
   },
   "dependencies": {
     "pino-pretty": "~9.1.1"
-  }
+  },
+  "files": [
+    "lib/**/*"
+  ]
 }
