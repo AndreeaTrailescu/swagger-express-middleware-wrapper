@@ -1,5 +1,5 @@
 {
-  "name": "hello-world",
+  "name": "swagger-express-middleware-wrapper",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -12,8 +12,8 @@
     "typescript": "^4.9.4"
   },
   "scripts": {
-    "build:cjs": "tsc -p tsconfig.json",
-    "build:esm": "tsc -p tsconfig.json --module esnext",
+    "build:cjs": "tsc --module commonjs",
+    "build:esm": "tsc --module esnext",
     "build": "yarn run build:cjs && yarn run build:esm",
     "clean": "rimraf dist",
     "develop": "yarn serve | pino-pretty",

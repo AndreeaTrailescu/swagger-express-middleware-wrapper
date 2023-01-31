@@ -8,6 +8,7 @@
     "noImplicitAny": true,
     "moduleResolution": "node",
     "declaration": true,
+    "declarationMap": true,
     "inlineSourceMap": true,
     "inlineSources": true
   },
