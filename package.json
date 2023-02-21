@@ -6,10 +6,11 @@
   "license": "MIT",
   "private": true,
   "devDependencies": {
+    "@types/express": "^4.17.17",
     "@types/node": "14.0.4",
     "eslint": "^8.32.0",
     "prettier": "^2.8.3",
-    "rimraf": "~4.1.0",
+    "rimraf": "^4.1.2",
     "typescript": "^4.9.4"
   },
   "exports": {
@@ -32,7 +33,11 @@
     "prepack": "yarn run build"
   },
   "dependencies": {
-    "pino-pretty": "~9.1.1"
+    "@types/swagger-express-middleware": "~1.0.11",
+    "api-spec-converter": "~2.12.0",
+    "express": "^4.18.2",
+    "pino-pretty": "~9.1.1",
+    "swagger-express-middleware": "4.0.2"
   },
   "files": [
     "lib/**/*"
