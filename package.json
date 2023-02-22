@@ -4,7 +4,7 @@
   "types": "./lib/cjs/types/index.d.ts",
   "main": "./lib/cjs/index.js",
   "license": "MIT",
-  "private": true,
+  "private": false,
   "devDependencies": {
     "@types/express": "^4.17.17",
     "@types/node": "14.0.4",
