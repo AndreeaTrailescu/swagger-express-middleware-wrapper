@@ -1,5 +1,5 @@
 {
-  "name": "swagger-express-middleware-wrapper",
+  "name": "swagger-express-middleware-wrapper-lib",
   "version": "1.0.0",
   "types": "./lib/cjs/types/index.d.ts",
   "main": "./lib/cjs/index.js",
