@@ -13,23 +13,31 @@ export interface CustomImplementation {
 
 export interface DataStore {
   save: (key: string, name: string, data: unknown) => Promise<void>;
-  load: (key: string, callback?: ResourceCallback) => Promise<Error | unknown>;
-  loadCollection: (
-    key: string,
-    callback?: ResourcesCallback
-  ) => Promise<Error | Array<unknown>>;
+  load: (key: string) => Promise<Error | unknown>;
+  loadCollection: (key: string) => Promise<Error | Array<unknown>>;
 }
 
 export const store: DataStore = {
-  load: async (key: string, callback?: ResourceCallback) => {
-    dataStore.get(key, callback);
+  load: async (key: string) => {
+    return new Promise((resolve, reject) =>
+      dataStore.get(key, (error: Error, resource: unknown) => {
+        if (error) reject(error);
+        else resolve(resource);
+      })
+    );
   },
+
   save: async (key: string, name: string, data: unknown) => {
     return dataStore.save(createResource(key, name, data));
   },
 
-  loadCollection: async (key: string, callback?: ResourcesCallback) => {
-    return dataStore.getCollection(key, callback);
+  loadCollection: async (key: string) => {
+    return new Promise((resolve, reject) =>
+      dataStore.getCollection(key, (error: Error, resource: unknown[]) => {
+        if (error) reject(error);
+        else resolve(resource);
+      })
+    );
   },
 };
 
